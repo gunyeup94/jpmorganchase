@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="city"
+            type="com.jpmorgan.jpmorganproject.network.response.City" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@drawable/rectangle_boundary_raidus_6">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text = "@{city.name}"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text = "@{city.state}"
+            android:layout_marginTop = "10dp"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text = "@{city.country}"
+            android:layout_marginTop = "10dp"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+</layout>

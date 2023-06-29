@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="locationPermitted"
+            type="Boolean" />
+        <variable
+            name="hasCity"
+            type="Boolean" />
+        <variable
+            name="weather"
+            type="com.jpmorgan.jpmorganproject.network.response.WeatherRo" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/fl_permission_not_granted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_boundary_raidus_6"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:visibility="@{locationPermitted ? View.GONE : View.VISIBLE}">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:text = "Location Permission is not granted.\n Showing the last searched city for the default."/>
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@id/fl_permission_not_granted"
+            android:visibility="@{hasCity ? View.VISIBLE : View.GONE}">
+
+            <ImageView
+                android:id= "@+id/iv_weather_icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28dp"
+                android:text="@{weather.name}"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/tv_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tv_temp_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tv_temp_max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tv_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize = "18sp"
+            android:text = "You have not searched any city yet.\n Please Search New City"
+            android:visibility="@{hasCity ? View.GONE : View.VISIBLE}"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Search New City"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"/>
+    </RelativeLayout>
+</layout>
